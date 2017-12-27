@@ -19,6 +19,3 @@ def get_cpu():
     sys_cpu['softirq'] = cpu_time.softirq
     sys_cpu['guest'] = cpu_time.guest
     return sys_cpu
-
-getCpu = get_cpu()
-print(getCpu)
