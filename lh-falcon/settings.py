@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lh-falcon.alarm',
+    'lh-falcon.dashboard',
+    'lh-falcon.graph',
+    'lh-falcon.hbs',
+    'lh-falcon.query',
+    'lh-falcon.servers',
+    'lh-falcon.transfer',
+    'lh-falcon.users'
 ]
 
 MIDDLEWARE = [
@@ -49,12 +57,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sumon.urls'
+ROOT_URLCONF = 'lh-falcon.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sumon.wsgi.application'
+WSGI_APPLICATION = 'lh-falcon.wsgi.application'
 
 
 # Database
