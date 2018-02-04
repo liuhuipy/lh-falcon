@@ -1,17 +1,8 @@
 # -*- coding:utf-8 -*-
-import datetime
-
 from django.db import models
 
 
-class Applications(models.Model):
-    name = models.CharField(max_length=50, unique=True, verbose_name='应用')
-
-    create_time = models.DateTimeField(default=datetime.datetime.now, verbose_name='创建时间')
-    update_time = models.DateTimeField(default=datetime.datetime.now, verbose_name='更新时间')
-
-
-class items(models.Model):
+class Items(models.Model):
     """
     监控项：
     被监控服务器通过agent、SNMP或其他方式采集的数十上百个甚至更多监控项
