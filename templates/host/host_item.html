@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/host.css">
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            主机详情
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-server"></i> 主机管理</a>
+            <li><a href=""> 主机</a></li>
+            <li class="active"><a href="#">主机详情</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <!-- Single button -->
+                        <div class="btn-group pull-left" id="res">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                查看主机{{ host.hostname }}的指标 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for item in item_list %}
+                                    <li><a style="color: #00a157">{{ item.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <form class="pull-right" action="{% url 'common:host_item_graph' host.pk %}" class="form-horizontal" method="POST">
+                                <!-- text input -->
+                                {% csrf_token %}
+                                <input type="text" id="item"/>
+                                <button type="submit" class="btn btn-success">提 交</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        {{ graph_img }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $('#g-2').addClass('active');
+            $('#g-2-1').addClass('active');
+        });
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                var hostname = {{ hostname }};
+                var item = $('#submit').value();
+                console.log(hostname, item);
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: {
+                        'hostname': hostname,
+                        'item': item
+                    },
+                    dataType: 'html',
+                    cache: false
+                });
+                return false;
+            });
+            $('#g-5').addClass('active');
+            $('#g-5-1').addClass('active');
+        });
+    </script>
+
+{% endblock %}

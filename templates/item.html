@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/host.css">
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            主机详情
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-server"></i> 主机管理</a>
+            <li><a href=""> 主机</a></li>
+            <li class="active"><a href="#">主机详情</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h1 class="box-title" style="font-size: 25px;">{{ name }}</h1>
+                        <a href="" class="pull-right"><button class="btn btn-primary">修改主机配置</button></a>
+                    </div>
+                    <div class="box-body">
+                        <img src="/static/images/{{ item_picture_url }}">
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $('#g-2').addClass('active');
+            $('#g-2-1').addClass('active');
+        });
+    </script>
+{% endblock %}

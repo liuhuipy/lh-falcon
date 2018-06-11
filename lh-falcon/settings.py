@@ -25,7 +25,7 @@ SECRET_KEY = '0k*1jydk_$%aswwgf7vbr+1q&n*t_f1l#+^=3vtp8%x25^$9hw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,14 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'lh-falcon.alarm',
-    'lh-falcon.dashboard',
-    'lh-falcon.graph',
-    'lh-falcon.hbs',
-    'lh-falcon.query',
-    'lh-falcon.servers',
-    'lh-falcon.transfer',
-    'lh-falcon.users'
+    'alarm',
+    'dashboard',
+    'transfer',
+    'common',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +123,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join('static')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# User Auth model
+AUTH_USER_MODEL = 'users.User'
+
